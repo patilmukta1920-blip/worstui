@@ -1,0 +1,1042 @@
+/* =========================================================
+   THE WORST UI IN HUMAN HISTORY - WORD SEARCH EDITION
+   WARNING: MAY CAUSE CONFUSION, EYESTRAIN, AND BEWILDERMENT
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Creepster&family=Rubik+Glitch&family=VT323&display=swap');
+
+:root {
+    --dark-sludge: #120e07;
+    --dark-swamp: #18220d;
+    --dark-mustard: #362903;
+    --toxic-neon-green: #39ff14;
+    --eye-burn-magenta: #ff007f;
+    --clashing-cyan: #00ffff;
+    --vomit-yellow: #dfff00;
+    --blood-orange: #ff3300;
+    --ugly-purple: #3f0947;
+    --mud-brown: #4d3319;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Ugly cursor */
+html, body {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><text y='24' font-size='24'>🪳</text></svg>"), crosshair !important;
+}
+
+button, a, input {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><text y='24' font-size='24'>💩</text></svg>"), pointer !important;
+}
+
+/* Base Body: Darkest ugly colors with repetitive sickening stripes */
+body#cursed-body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--dark-sludge);
+    background-image: 
+        repeating-linear-gradient(
+            47deg,
+            #151007 0px,
+            #151007 20px,
+            #231808 20px,
+            #231808 40px,
+            #1a240e 40px,
+            #1a240e 60px
+        );
+    color: #b59f3b; /* sickly muted mustard text */
+    font-family: 'Comic Neue', 'Comic Sans MS', 'Chalkboard SE', cursive, sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    border: 15px dashed var(--eye-burn-magenta);
+}
+
+/* Screen distortion / worse mode */
+body.worse-mode {
+    filter: invert(1) hue-rotate(180deg) contrast(170%);
+    animation: jitter-screen 0.2s infinite;
+}
+
+@keyframes jitter-screen {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    50% { transform: translate(-2px, 1px) rotate(0.4deg); }
+    100% { transform: translate(1px, -1px) rotate(-0.3deg); }
+}
+
+/* Background floating emoji cloud */
+#emoji-cloud {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 999;
+    overflow: hidden;
+}
+
+.floating-emoji {
+    position: absolute;
+    font-size: 28px;
+    animation: drift-and-spin 12s linear infinite;
+    user-select: none;
+    opacity: 0.75;
+}
+
+@keyframes drift-and-spin {
+    0% {
+        transform: translateY(110vh) rotate(0deg) scale(0.8);
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 0.9;
+        transform: translateY(50vh) rotate(180deg) scale(1.4);
+    }
+    100% {
+        transform: translateY(-20vh) rotate(360deg) scale(0.7);
+        opacity: 0.1;
+    }
+}
+
+/* Top Marquee Disaster */
+.top-marquee-disaster {
+    background: linear-gradient(90deg, #300000, #403000, #003311, #300040);
+    border-bottom: 6px ridge var(--toxic-neon-green);
+    padding: 6px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.screaming-marquee {
+    color: var(--vomit-yellow);
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    font-size: 21px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px #ff0000, -2px -2px 0px #0000ff;
+}
+
+/* Toxic Nav: Misaligned, overlapping, rotated */
+.toxic-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-around;
+    padding: 15px 40px;
+    background-color: #0b0704;
+    border-bottom: 8px dotted var(--clashing-cyan);
+    margin-bottom: 35px;
+    transform: rotate(-0.6deg);
+}
+
+.nav-item {
+    padding: 12px 28px;
+    text-decoration: underline wavy var(--blood-orange);
+    color: var(--toxic-neon-green);
+    font-weight: 900;
+    background: #251804;
+    border: 3px outset var(--eye-burn-magenta);
+}
+
+.rotate-left {
+    transform: rotate(-7deg);
+    font-size: 19px;
+}
+
+.tiny-nav {
+    font-size: 8px; /* Bad text formatting */
+    transform: rotate(4deg);
+    margin-left: -20px;
+    color: #4b3e24; /* almost invisible */
+}
+
+.huge-nav {
+    font-size: 26px;
+    background: #ff0000;
+    color: #ffffff;
+    animation: flash-pulse 0.4s infinite alternate;
+}
+
+@keyframes flash-pulse {
+    0% { background: #ff0000; color: #fff; }
+    100% { background: #00ffff; color: #000; }
+}
+
+.upside-down {
+    display: inline-block;
+    transform: rotate(180deg);
+    font-size: 15px;
+    background: #2b0033;
+}
+
+.vomit-btn {
+    background: #524707;
+    color: #ff0055;
+    border: 4px groove #00ff66;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 6px 6px 0px #ff0000;
+}
+
+.vomit-btn:hover {
+    background: #00ffbb;
+    color: #000;
+}
+
+/* Main Container with terrible, erratic spacing */
+.catastrophe-container {
+    max-width: 1400px;
+    margin-left: 85px;  /* deliberately off-center */
+    margin-right: 15px;
+    padding: 10px 45px 80px 5px;
+}
+
+/* Header Cluster: Inverted Text Hierarchy */
+.header-clusterfuck {
+    border: 7px dashed #593e10;
+    background: #191206;
+    padding: 30px 10px 20px 70px;
+    margin-bottom: 45px;
+    transform: skew(-2deg);
+    box-shadow: -15px 12px 0px #0b0704, 15px -10px 0px #38122a;
+}
+
+/* MAIN TITLE IS INCREDIBLY TINY (User: "huge the text which one is very small") */
+.microscopic-title {
+    font-size: 6px !important;
+    color: #524021;
+    margin: 0;
+    padding: 0;
+    text-transform: lowercase;
+    letter-spacing: 0.2px;
+    font-family: 'Times New Roman', serif;
+    text-align: right;
+    line-height: 8px;
+}
+
+/* SUBTITLE IS ABSURDLY GIGANTIC */
+.gargantuan-subtitle {
+    font-size: 44px;
+    font-weight: 900;
+    color: var(--toxic-neon-green);
+    background: linear-gradient(45deg, #ff007f, #ffff00, #00ffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 4px 4px 1px #470c0c;
+    margin: 15px 0 5px -35px;
+    letter-spacing: -2px;
+    word-spacing: 18px;
+    text-align: left;
+    font-family: 'Rubik Glitch', 'Impact', cursive;
+}
+
+.random-emoji-vomit {
+    font-size: 34px;
+    letter-spacing: 12px;
+    animation: wobble-text 1.5s ease-in-out infinite;
+    text-align: center;
+    margin-top: 10px;
+}
+
+@keyframes wobble-text {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(-3deg) scale(1.08); }
+    75% { transform: rotate(3deg) scale(0.95); }
+}
+
+/* Search Disaster Zone: Spacing everywhere, bad alignment */
+.search-disaster-zone {
+    background-color: #1a1608;
+    border: 6px double #614400;
+    padding: 35px 20px 40px 90px;
+    margin-left: -30px;
+    margin-right: 40px;
+    margin-bottom: 50px;
+    box-shadow: 12px 18px 0px #310a26;
+    position: relative;
+}
+
+.misaligned-label-wrapper {
+    margin-bottom: 20px;
+    margin-left: 120px;
+    text-align: right;
+}
+
+.spastic-label {
+    font-size: 26px;
+    color: var(--vomit-yellow);
+    text-transform: capitalize;
+    font-family: 'VT323', monospace;
+    letter-spacing: 3px;
+    display: inline-block;
+    transform: rotate(2deg);
+    background: #2b1f07;
+    padding: 6px 16px;
+    border-left: 10px solid #ff0055;
+}
+
+.teeny-tiny-help {
+    font-size: 7px;
+    color: #4b3d22;
+    display: block;
+    margin-top: 4px;
+}
+
+.input-cluster {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 25px;
+    margin-top: 15px;
+}
+
+/* Horrific Word Input Box */
+#word-input {
+    flex: 1;
+    min-width: 290px;
+    background-color: #0b0904;
+    color: #39ff14;
+    font-family: 'Creepster', 'Comic Sans MS', cursive;
+    font-size: 32px;
+    padding: 22px 30px;
+    border: 7px dashed var(--eye-burn-magenta);
+    border-radius: 40px 5px 35px 10px;
+    outline: none;
+    box-shadow: inset 8px 8px 12px #000, 10px 10px 0px #ffbb00;
+    letter-spacing: 4px;
+    text-align: center;
+    transition: transform 0.1s ease;
+}
+
+#word-input:focus {
+    background-color: #1a0815;
+    border-color: #00ffff;
+    transform: scale(1.03) rotate(-1deg);
+}
+
+#word-input::placeholder {
+    color: #4d3d19;
+    font-size: 18px;
+    font-family: 'Times New Roman', serif;
+}
+
+/* Chaotic Button Madness */
+.button-madness {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Gigantic Ugly Search Button */
+.gigantic-ugly-button {
+    background: linear-gradient(135deg, #4d3500 0%, #ff0055 50%, #001f3f 100%);
+    color: #ffff00;
+    font-size: 26px;
+    font-family: 'Impact', 'Comic Sans MS', sans-serif;
+    font-weight: 900;
+    padding: 20px 38px;
+    border: 8px ridge #39ff14;
+    border-radius: 90px 15px 80px 20px;
+    box-shadow: -8px 8px 0px #000, 8px -8px 0px #ff00ff;
+    text-shadow: 2px 2px #000;
+    transform: rotate(-1.5deg);
+    transition: all 0.15s ease;
+}
+
+.gigantic-ugly-button:hover {
+    transform: scale(1.1) rotate(2deg);
+    background: linear-gradient(135deg, #00ffbb, #ff0055);
+    color: #000;
+}
+
+.gigantic-ugly-button:active {
+    transform: scale(0.9) rotate(-4deg);
+}
+
+/* Slippery button that moves away when hovered */
+.slippery-button {
+    background: #3a1010;
+    color: #ff9999;
+    border: 3px dotted #ff0000;
+    padding: 14px 22px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 4px;
+    position: relative;
+    transition: transform 0.1s;
+}
+
+.clashing-btn {
+    background: #1f2d08;
+    color: #dfff00;
+    border: 4px solid #ff00aa;
+    padding: 14px 18px;
+    font-size: 15px;
+    font-weight: bold;
+    transform: rotate(1deg);
+}
+
+.clashing-btn:hover {
+    background: #ff00aa;
+    color: #000;
+}
+
+/* Status Box */
+.status-box {
+    margin-top: 25px;
+    padding: 16px;
+    background: #0d0a04;
+    border: 4px groove #4d3600;
+    text-align: left;
+    margin-left: -50px;
+    transform: rotate(0.8deg);
+}
+
+.status-text {
+    font-size: 20px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    color: #00ffff;
+    text-shadow: 1px 1px 0px #ff0055;
+}
+
+/* =========================================================
+   GAMEPLAY HORROR: Word Search Grid & Target List
+   ========================================================= */
+
+.gameplay-horror {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+/* The Grid Wrapper */
+.grid-wrapper {
+    flex: 1 1 650px;
+    background: #171107;
+    border: 8px double #4a3407;
+    padding: 25px 30px;
+    box-shadow: -10px 15px 0px #290820;
+    position: relative;
+    transform: rotate(-0.3deg);
+}
+
+.grid-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px dashed #382909;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+.sub-micro-header {
+    font-size: 11px;
+    color: #8c7333;
+    font-family: 'Papyrus', fantasy, serif;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.grid-timer-ugly {
+    background: #000;
+    color: #ff3300;
+    font-family: 'VT323', monospace;
+    font-size: 24px;
+    padding: 4px 14px;
+    border: 2px solid #550000;
+}
+
+/* THE 10x10 WORD SEARCH GRID */
+.word-grid-table {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 6px;
+    padding: 15px;
+    background-color: #0d0a05;
+    border: 6px solid #36280b;
+    user-select: none;
+    touch-action: none;
+}
+
+/* Individual Grid Cells - Pure Visual Chaos */
+.grid-cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1e160a;
+    border: 2px solid #3d2b0e;
+    font-family: 'Comic Sans MS', 'Chalkboard', cursive;
+    font-weight: 900;
+    color: #d6bb5c;
+    user-select: none;
+    transition: all 0.1s ease;
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.8);
+    position: relative;
+}
+
+/* Intentional chaotic variation in font size & rotation */
+.grid-cell:nth-child(2n) {
+    font-size: 26px;
+    color: #ff55a3;
+    transform: rotate(3deg);
+    background: #171f0d;
+}
+
+.grid-cell:nth-child(3n) {
+    font-size: 18px;
+    color: #00e5ff;
+    transform: rotate(-4deg);
+    background: #24140a;
+    font-family: 'Impact', sans-serif;
+}
+
+.grid-cell:nth-child(5n) {
+    font-size: 30px;
+    color: #ffff00;
+    transform: rotate(6deg);
+    background: #260c22;
+    border-color: #730055;
+}
+
+.grid-cell:nth-child(7n) {
+    font-size: 14px;
+    color: #a8ff54;
+    transform: rotate(-7deg);
+    background: #141b1d;
+}
+
+.grid-cell:hover {
+    background: #5c420e !important;
+    color: #ffffff !important;
+    transform: scale(1.2) rotate(10deg) !important;
+    z-index: 10;
+    border: 2px solid #00ffff;
+}
+
+/* Selection & Found states with hideous styling */
+.grid-cell.selected {
+    background: #4d003b !important;
+    color: #39ff14 !important;
+    border: 3px solid #ff007f !important;
+    transform: scale(1.1) rotate(0deg) !important;
+    box-shadow: 0 0 10px #ff0055;
+}
+
+.grid-cell.found {
+    background: #283808 !important;
+    color: #ffff00 !important;
+    text-decoration: line-through 4px #ff0000;
+    border: 3px dashed #39ff14 !important;
+    animation: cell-celebrate 0.6s infinite alternate;
+}
+
+@keyframes cell-celebrate {
+    0% { transform: scale(1) rotate(-3deg); }
+    100% { transform: scale(1.08) rotate(3deg); }
+}
+
+.grid-undertext {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.upside-down-text {
+    transform: rotate(180deg);
+    font-size: 13px;
+    color: #403217;
+    margin: 0;
+}
+
+/* =========================================================
+   ASIDE: Word List Dumpster & Annoying Widgets
+   ========================================================= */
+
+.word-list-dumpster {
+    flex: 1 1 320px;
+    background: #1c1507;
+    border: 7px ridge #543906;
+    padding: 25px 20px;
+    box-shadow: 12px 12px 0px #0b0704;
+    margin-top: -15px; /* misalignment */
+}
+
+.list-title {
+    font-size: 28px;
+    font-family: 'Impact', sans-serif;
+    color: var(--eye-burn-magenta);
+    background: #0d0a04;
+    padding: 8px 12px;
+    border: 3px solid #ffcc00;
+    text-align: right;
+    margin-top: 0;
+    transform: rotate(-1deg);
+}
+
+.disgusting-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.target-word-item {
+    padding: 8px 14px;
+    background: #251c09;
+    border-left: 8px solid #ff5500;
+    border-right: 2px dashed #00ffff;
+    color: #d8c271;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.target-word-item:nth-child(even) {
+    transform: rotate(1.5deg) translateX(15px);
+    background: #17240c;
+    border-left-color: #39ff14;
+}
+
+.target-word-item:nth-child(odd) {
+    transform: rotate(-1.5deg) translateX(-10px);
+    background: #240d1e;
+    border-left-color: #ff00aa;
+}
+
+.target-word-item.word-found {
+    text-decoration: line-through 5px #ff0000;
+    color: #555555 !important;
+    background: #0f0b04 !important;
+    opacity: 0.5;
+    transform: scale(0.95);
+}
+
+.word-emoji {
+    font-size: 22px;
+}
+
+/* Progress Suffering Bar */
+.cursed-progress-box {
+    margin-top: 25px;
+    background: #0e0a05;
+    padding: 12px;
+    border: 3px dashed #402f06;
+}
+
+.cursed-progress-box label {
+    font-size: 13px;
+    color: #a89146;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.progress-bar-disaster {
+    height: 32px;
+    background: #000;
+    border: 3px inset #ff0055;
+    position: relative;
+    overflow: hidden;
+}
+
+#pain-meter-fill {
+    height: 100%;
+    background: repeating-linear-gradient(
+        -45deg,
+        #ff0000,
+        #ff0000 10px,
+        #ffff00 10px,
+        #ffff00 20px
+    );
+    color: #000;
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 28px;
+    text-align: center;
+    transition: width 0.4s ease;
+}
+
+/* Fake Ad Box */
+.fake-ad-box {
+    margin-top: 30px;
+    background: #332604;
+    border: 6px ridge #ffff00;
+    padding: 15px;
+    text-align: center;
+    animation: flash-ad 0.8s infinite alternate;
+}
+
+@keyframes flash-ad {
+    0% { border-color: #ffff00; box-shadow: 0 0 10px #ff0000; }
+    100% { border-color: #00ffff; box-shadow: 0 0 20px #00ff00; }
+}
+
+.ad-tag {
+    font-size: 9px;
+    color: #8a742d;
+    margin: 0;
+    text-align: left;
+}
+
+.ad-title {
+    font-size: 22px;
+    font-family: 'Impact', sans-serif;
+    color: #ff0000;
+    margin: 5px 0;
+    background: #ffff00;
+    padding: 4px;
+}
+
+.ad-desc {
+    font-size: 12px;
+    color: #ffffff;
+    margin: 8px 0;
+}
+
+.ad-cta {
+    background: #ff0055;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 900;
+    padding: 10px 18px;
+    border: 3px solid #ffffff;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px #000;
+}
+
+.ad-cta:hover {
+    background: #00ff00;
+    color: #000000;
+}
+
+/* =========================================================
+   FOOTER: GIGANTIC TEXT THAT SHOULD BE VERY SMALL
+   ========================================================= */
+
+.footer-abomination {
+    margin-top: 70px;
+    background: #0d0903;
+    border-top: 14px solid var(--blood-orange);
+    border-bottom: 14px solid var(--toxic-neon-green);
+    padding: 50px 20px;
+    text-align: justify;
+    box-shadow: 0 -15px 0px #240a1b;
+}
+
+/* User requirement: "huge the text which one is very small" */
+.monstrous-footer-text {
+    font-size: 42px !important;
+    line-height: 1.1;
+    font-weight: 900;
+    color: #ff3b30;
+    font-family: 'Comic Sans MS', 'Chalkboard', fantasy;
+    letter-spacing: -1px;
+    word-break: break-word;
+    text-shadow: 3px 3px 0px #ffff00, -3px -3px 0px #00ffff;
+    margin: 0 0 30px 0;
+    transform: rotate(0.4deg);
+}
+
+.random-links {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.broken-link {
+    color: var(--clashing-cyan);
+    text-decoration: underline wavy var(--eye-burn-magenta);
+    padding: 4px 8px;
+    font-weight: bold;
+}
+
+.badge-cluster {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.fake-badge {
+    background: #331f05;
+    border: 3px groove #997316;
+    color: #ffea75;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: bold;
+    transform: rotate(-2deg);
+}
+
+/* =========================================================
+   MOLDY TOAST ASSISTANT
+   ========================================================= */
+
+.moldy-assistant {
+    position: fixed;
+    bottom: 20px;
+    right: 25px;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.assistant-speech-bubble {
+    background: #ffffcc;
+    color: #000;
+    padding: 14px 18px;
+    border-radius: 18px 18px 2px 18px;
+    border: 4px solid #000;
+    font-size: 14px;
+    font-weight: bold;
+    max-width: 250px;
+    box-shadow: 6px 6px 0px rgba(0,0,0,0.6);
+    margin-bottom: 8px;
+    position: relative;
+    font-family: 'Comic Sans MS', sans-serif;
+    animation: bubble-float 2s ease-in-out infinite alternate;
+}
+
+@keyframes bubble-float {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-8px); }
+}
+
+.assistant-avatar {
+    font-size: 60px;
+    cursor: pointer;
+    filter: drop-shadow(4px 4px 0px #000);
+    animation: assistant-shake 3s infinite;
+}
+
+@keyframes assistant-shake {
+    0%, 90% { transform: rotate(0deg); }
+    92% { transform: rotate(-10deg) scale(1.1); }
+    95% { transform: rotate(10deg) scale(1.1); }
+    98% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.assistant-close {
+    background: #ff0000;
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    border: 1px solid #000;
+    cursor: pointer;
+    margin-top: 4px;
+    padding: 2px 6px;
+}
+
+/* =========================================================
+   UNWANTED POPUPS & DIALOG HORRORS
+   ========================================================= */
+
+.annoying-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 5, 0, 0.75);
+    z-index: 20000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Classic Retro Bad Window */
+.cookie-window, .warning-window, .spin-window {
+    background: #c0c0c0;
+    border: 5px outset #ffffff;
+    box-shadow: 18px 18px 0px #000;
+    max-width: 580px;
+    width: 90%;
+    transform: rotate(-1deg);
+    animation: popup-drop 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+@keyframes popup-drop {
+    0% { transform: scale(0.2) rotate(-15deg); opacity: 0; }
+    100% { transform: scale(1) rotate(-1deg); opacity: 1; }
+}
+
+.window-titlebar {
+    background: linear-gradient(90deg, #000080, #1084d0);
+    color: #ffffff;
+    font-family: 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    padding: 6px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+}
+
+.window-titlebar.red-bar {
+    background: linear-gradient(90deg, #800000, #ff0000);
+}
+
+.window-titlebar.green-bar {
+    background: linear-gradient(90deg, #005500, #00bb00);
+}
+
+.win-btn-close {
+    background: #c0c0c0;
+    border: 2px outset #ffffff;
+    font-weight: 900;
+    padding: 2px 8px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.window-content {
+    padding: 25px 20px;
+    color: #000000;
+    font-family: 'Times New Roman', serif;
+}
+
+.cookie-text-big {
+    font-size: 22px;
+    font-weight: 900;
+    color: #990000;
+    margin-top: 0;
+    text-align: center;
+}
+
+.cookie-text-tiny {
+    font-size: 10px;
+    color: #333333;
+    line-height: 1.3;
+    max-height: 80px;
+    overflow-y: scroll;
+    border: 2px inset #fff;
+    padding: 6px;
+    background: #fff;
+}
+
+.cookie-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+    position: relative;
+    height: 60px;
+}
+
+.ugly-accept-btn {
+    background: #00aa00;
+    color: #fff;
+    font-weight: 900;
+    font-size: 16px;
+    padding: 10px 18px;
+    border: 4px outset #39ff14;
+    cursor: pointer;
+}
+
+.ugly-decline-btn {
+    background: #aa0000;
+    color: #fff;
+    font-weight: 900;
+    font-size: 15px;
+    padding: 10px 16px;
+    border: 4px outset #ff6666;
+    position: absolute;
+    right: 20px;
+    transition: all 0.15s ease-out;
+}
+
+.ugly-confirm-btn {
+    background: #ff5500;
+    color: #000;
+    font-weight: 900;
+    font-size: 16px;
+    padding: 12px;
+    border: 4px groove #000;
+    width: 100%;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.ugly-abort-btn {
+    background: #777;
+    color: #fff;
+    font-size: 12px;
+    padding: 6px;
+    border: 2px solid #000;
+    width: 100%;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.spinny-box {
+    font-size: 55px;
+    text-align: center;
+    animation: spinny 0.6s infinite linear;
+}
+
+@keyframes spinny {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.flashing-text {
+    font-size: 24px;
+    font-weight: 900;
+    color: #ff0000;
+    animation: flash-pulse 0.2s infinite alternate;
+    text-align: center;
+}
+
+.ugly-spin-btn {
+    background: #ffff00;
+    color: #ff007f;
+    font-size: 18px;
+    font-weight: 900;
+    padding: 12px;
+    border: 4px ridge #00ffff;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* =========================================================
+   RESPONSIVE HORROR
+   ========================================================= */
+
+@media (max-width: 768px) {
+    .catastrophe-container {
+        margin-left: 5px;
+        margin-right: 5px;
+        padding: 5px;
+    }
+
+    .word-grid-table {
+        gap: 3px;
+        padding: 6px;
+    }
+
+    .grid-cell {
+        font-size: 14px !important;
+    }
+
+    .monstrous-footer-text {
+        font-size: 26px !important;
+    }
+
+    .gargantuan-subtitle {
+        font-size: 28px;
+    }
+}
